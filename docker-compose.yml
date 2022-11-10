@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  ui:
+    build: 
+      context: .
+    command: ["npm", "run", "start"]
+    restart: on-failure
+    volumes:
+      - .:/app/
+    ports:
+      - 3000:3000
+    environment:
+      VIRTUAL_HOST: test.do.docker
+    networks:
+      - test-net
+
+networks:
+  test-net:      
